@@ -1,73 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-  <title>Phone Windows — LIGHT</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <title>PhoneOS Window Edition</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="desktop" class="desktop">
-    <!-- Icons -->
-    <div id="icons" class="icons">
-      <div class="icon" data-app="explorer">
-        <div class="icon-img">📁</div>
-        <div class="icon-label">Проводник</div>
-      </div>
-      <div class="icon" data-app="google">
-        <div class="icon-img">🌐</div>
-        <div class="icon-label">Google</div>
-      </div>
-      <div class="icon" data-app="notepad">
-        <div class="icon-img">📝</div>
-        <div class="icon-label">Блокнот</div>
-      </div>
-      <div class="icon" data-app="recycle">
-        <div class="icon-img">🗑️</div>
-        <div class="icon-label">Корзина</div>
-      </div>
+
+<canvas id="desktopCanvas"></canvas>
+
+<div id="taskbar">
+    <div id="startBtn">☰ Пуск</div>
+    <div id="taskbarApps"></div>
+</div>
+
+<!-- Пуск -->
+<div id="startMenu" class="window">
+    <h3>Пуск</h3>
+    <button onclick="openApp('explorer')">🗂 Проводник</button>
+    <button onclick="openApp('notepad')">📝 Блокнот</button>
+    <button onclick="openApp('settings')">⚙ Настройки</button>
+    <button onclick="openRecycleBin()">🗑 Корзина</button>
+</div>
+
+<!-- Проводник -->
+<div id="explorer" class="window appWindow">
+    <div class="titleBar">Проводник <span class="closeBtn" onclick="closeApp('explorer')">✖</span></div>
+    <div class="explorerControls">
+        <button onclick="createFolder()">📁 Новая папка</button>
+        <button onclick="createTextFile()">📝 Новый TXT</button>
     </div>
+    <div id="fileList"></div>
+</div>
 
-    <!-- Windows container -->
-    <div id="windows" class="windows"></div>
+<!-- Блокнот -->
+<div id="notepad" class="window appWindow">
+    <div class="titleBar">Блокнот <span class="closeBtn" onclick="closeApp('notepad')">✖</span></div>
+    <textarea id="notepadText"></textarea>
+    <button onclick="saveTextFile()">💾 Сохранить</button>
+</div>
 
-    <!-- Taskbar -->
-    <div class="taskbar">
-      <button id="startBtn" class="start-btn">Пуск ⬤</button>
-      <div class="taskbar-windows" id="taskbarWindows"></div>
-      <div class="taskbar-right">
-        <div id="time" class="time"></div>
-      </div>
-    </div>
+<!-- Корзина -->
+<div id="recycleBin" class="window appWindow">
+    <div class="titleBar">Корзина <span class="closeBtn" onclick="closeApp('recycleBin')">✖</span></div>
+    <div id="recycleList"></div>
+</div>
 
-    <!-- Start menu -->
-    <div id="startMenu" class="start-menu hidden">
-      <div class="start-header">Пуск — LIGHT</div>
-      <div class="start-items">
-        <button class="start-item" data-action="open" data-app="explorer">Проводник</button>
-        <button class="start-item" data-action="open" data-app="google">Google</button>
-        <button class="start-item" data-action="open" data-app="notepad">Блокнот</button>
-        <button class="start-item" data-action="open" data-app="settings">Настройки</button>
-        <button class="start-item" id="openRecycle">Открыть корзину</button>
-        <button class="start-item" id="shutdownBtn">Выключить</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Templates (hidden) -->
-  <template id="window-template">
-    <div class="window">
-      <div class="window-titlebar">
-        <div class="title"></div>
-        <div class="title-controls">
-          <button class="minimize" title="Свернуть">—</button>
-          <button class="close" title="Закрыть">✕</button>
-        </div>
-      </div>
-      <div class="window-body"></div>
-    </div>
-  </template>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
