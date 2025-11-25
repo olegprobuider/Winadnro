@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <title>Phone Windows — LIGHT</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="desktop" class="desktop">
+    <!-- Icons -->
+    <div id="icons" class="icons">
+      <div class="icon" data-app="explorer">
+        <div class="icon-img">📁</div>
+        <div class="icon-label">Проводник</div>
+      </div>
+      <div class="icon" data-app="google">
+        <div class="icon-img">🌐</div>
+        <div class="icon-label">Google</div>
+      </div>
+      <div class="icon" data-app="notepad">
+        <div class="icon-img">📝</div>
+        <div class="icon-label">Блокнот</div>
+      </div>
+      <div class="icon" data-app="recycle">
+        <div class="icon-img">🗑️</div>
+        <div class="icon-label">Корзина</div>
+      </div>
+    </div>
+
+    <!-- Windows container -->
+    <div id="windows" class="windows"></div>
+
+    <!-- Taskbar -->
+    <div class="taskbar">
+      <button id="startBtn" class="start-btn">Пуск ⬤</button>
+      <div class="taskbar-windows" id="taskbarWindows"></div>
+      <div class="taskbar-right">
+        <div id="time" class="time"></div>
+      </div>
+    </div>
+
+    <!-- Start menu -->
+    <div id="startMenu" class="start-menu hidden">
+      <div class="start-header">Пуск — LIGHT</div>
+      <div class="start-items">
+        <button class="start-item" data-action="open" data-app="explorer">Проводник</button>
+        <button class="start-item" data-action="open" data-app="google">Google</button>
+        <button class="start-item" data-action="open" data-app="notepad">Блокнот</button>
+        <button class="start-item" data-action="open" data-app="settings">Настройки</button>
+        <button class="start-item" id="openRecycle">Открыть корзину</button>
+        <button class="start-item" id="shutdownBtn">Выключить</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Templates (hidden) -->
+  <template id="window-template">
+    <div class="window">
+      <div class="window-titlebar">
+        <div class="title"></div>
+        <div class="title-controls">
+          <button class="minimize" title="Свернуть">—</button>
+          <button class="close" title="Закрыть">✕</button>
+        </div>
+      </div>
+      <div class="window-body"></div>
+    </div>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
